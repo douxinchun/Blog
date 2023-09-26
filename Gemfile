@@ -18,7 +18,6 @@ gem "github-pages", group: :jekyll_plugins
 group :jekyll_plugins do
   gem "jekyll-feed"
   gem "octopress"
-  gem "octopress-codeblock"
   gem "octopress-image-tag"
   gem "kramdown-parser-gfm"
 end
