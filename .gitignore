@@ -5,3 +5,5 @@ _site
 vendor
 .code-highlighter-cache
 .deploy
+# Desktop Services Store file for mac OS
+.DS_Store

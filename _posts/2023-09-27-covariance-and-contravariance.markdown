@@ -3,6 +3,7 @@ layout: post
 title: "Swift 中的协变与逆变"
 date: 2023-09-27T22:47:33+08:00
 category: Swift
+comments: true
 ---
 
 **协变 - Covaiance**  
