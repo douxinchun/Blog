@@ -4,15 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# Xinchun Dou  
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+iOS 程序员, 懂一点 Ruby, Java, JavaScript. 现居北京, 业余爱好中国象棋.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+早期 Blog: [CSDN](http://blog.csdn.net/douxinchun)  
 
+Email: douxinchun@gmail.com  
 
-[jekyll-organization]: https://github.com/jekyll
+曾就职于北京搜狐新媒体和 LinkedIn China
