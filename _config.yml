@@ -23,7 +23,7 @@ email: douxinchun@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Dying is the day worth living for
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://douxinchun.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username: douxinchun
 
