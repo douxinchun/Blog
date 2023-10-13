@@ -14,14 +14,14 @@ categories: iOS开发过程中遇到的坑
 <!--more-->
 最后,纠结了1分钟,在viewdidload,viewwillapear,viewdidappear,viewlayoutsubviews中都设置一次contentSize,Run,神奇的事情发生了,Scrollview动起来了,然后一个一个的去除contentSize,最终确定,只有在viewlayoutsubviews设置才会有效,,坑爹啊.  
 具体的code如下:  
-{% codeblock lang:objc viewDidLayoutSubviews %}
+```objc
 // Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
 - (void)viewWillLayoutSubviews{
     NSLog(@"viewWillLayoutSubviews");
     scrollview.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)+1);
     
 }
-{% endcodeblock %}
+```
 
 坑爹啊,问题虽然解决了,但是这不科学啊,于是重新查看UIViewController的生命周期:  
 ```
@@ -40,7 +40,7 @@ categories: iOS开发过程中遇到的坑
 
 解决办法：让UIScrollView将事件传递过去。于是最简单的解决办法就是加一个UIScrollView的category。这样每个用到UIScrollView的地方只要导入这个category就可以直接响应相关的touch事件了。
 
-{% codeblock lang:objc UIScrollView+UITouch %}
+```objc  
 #import "UIScrollView+UITouch.h"       
  @implementation UIScrollView (UITouch)       
  - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {   
@@ -56,12 +56,13 @@ categories: iOS开发过程中遇到的坑
    [super touchesEnded:touches withEvent:event];   
  }   
  @end 
-{% endcodeblock %}  
+``` 
+{: file="UIScrollView+UITouch" }
 
 ##3.UITableview点击背景隐藏键盘  
 由于UITableview是UIScrollview的子类,如果按照2中的方式话,会响应touchbegin方法,但是UITablevieDelegate中的didSelectRowAtIndexPath就会不响应了.  
 解决方法参照:http://stackoverflow.com/questions/2321038/dismiss-keyboard-by-touching-background-of-uitableview  
-{% codeblock lang:objc%}
+```objc
 UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
 [self.tableView addGestureRecognizer:gestureRecognizer];
 
@@ -69,15 +70,15 @@ UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] init
 //加入这一句,不会影响到tableview的didSelectRowAtIndexPath方法
 gestureRecognizer.cancelsTouchesInView = NO;
 
-{% endcodeblock %}  
+```  
 然后,添加hideKeyboard方法,想下面这样  
-{%codeblock%}
+```objc
 - (void) hideKeyboard {
     [self.view endEditing:YES];
     ...
     ...
 }
-{%endcodeblock%}  
+```  
 
 此外,还有一种可以响应touchbegin的方案参见这里 http://www.cnblogs.com/tangbinblog/p/4066930.html ,不过这种方案看上去需要以子类的方式重写hitTest方法,暂时没有考证可行性.先Mark一下,等以后再来看看.
 

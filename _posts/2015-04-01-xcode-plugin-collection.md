@@ -13,17 +13,17 @@ categories: Xcode
 Alcatraz是一个Xcode的开源的包管理工具.使用它,我们可以查找和安装各种各样的插件,模板以及配色方案.  
 安装Alcatraz很简单,打开Terminal,把下面一行粘贴进命令行即可,安装之前,友情提示:Alcatraz is available for OSX 10.9+ and Xcode 5+ only.  
 
-{% codeblock  %}
+```
 curl -fsSL https://raw.githubusercontent.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
-{% endcodeblock %}  
+``` 
 删除插件命令  
-{% codeblock %}
+```
 rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/Alcatraz.xcplugin
-{% endcodeblock %}  
+``` 
 清空Alcatraz缓存的命令  
-{% codeblock  %}
+```
 rm -rf ~/Library/Application\ Support/Alcatraz
-{% endcodeblock %}  
+``` 
 
 安装完成之后 ,最后提示 
 ```
@@ -59,7 +59,7 @@ GitHub:git@github.com:rickytan/RTImageAssets.git
 {% img https://camo.githubusercontent.com/7973c0e352b1f91e3efe5b3550cff5df97f4589a/687474703a2f2f7166692e73682f58416c69676e2f696d616765732f657175616c2e676966 %}
 
 安装方式 Terminal,  
-{% codeblock %}
+```
     # install
     $ curl http://qfi.sh/XAlign/build/install.sh | sh
 
@@ -67,7 +67,7 @@ GitHub:git@github.com:rickytan/RTImageAssets.git
     
     # update
     $ curl http://qfi.sh/XAlign/build/update.sh | sh
-{% endcodeblock %}
+```
 
 ##5.ClangFormat  
 

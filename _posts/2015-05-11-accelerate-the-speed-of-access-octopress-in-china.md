@@ -17,21 +17,21 @@ categories: octopress
 ###1.把jquery的cdn服务改成microsoft的 
 编辑文件 source/_includes/head.html  找到下图注释掉的部分,替换成 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
 
-{%codeblock  %}
+```
   <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
   <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-{%endcodeblock%}
+```
 
 ###2.缓存google fonts (将PT Serif和PT Sans缓存到本地) 
 打开 source/_includes/custom/head.html  
-{%codeblock%}
+```
 <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-{%endcodeblock%}  
+```  
 将 https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic 
 以及 https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic 中的内容复制到本地,并在 source/stylesheets 下新建pt_sans.css和pt_serif.css文件,文件部分内容如下:  
-{%codeblock%}
+```
 /* cyrillic-ext */
 @font-face {
   font-family: 'PT Serif';
@@ -57,10 +57,10 @@ categories: octopress
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 ...
-{%endcodeblock%}  
+```  
 注意,此处访问这两个链接可能需要翻墙.
 新建一个目录 source/fonts 把字体解压缩到这个目录下.  
-{%codeblock%}
+```
 douxinchundeiMac:fonts douxinchun$ pwd
 /Users/douxinchun/octopress/source/fonts
 douxinchundeiMac:fonts douxinchun$ tree
@@ -102,10 +102,10 @@ douxinchundeiMac:fonts douxinchun$ tree
 
 2 directories, 32 files
 douxinchundeiMac:fonts douxinchun$
-{%endcodeblock%}  
+```  
 
 将文件pt_sans.css和pt_serif.css的web引用修改为本地引用,文件部分内容如下:
-{%codeblock%}
+```
 /* cyrillic-ext */
 @font-face {
   font-family: 'PT Sans';
@@ -122,14 +122,14 @@ douxinchundeiMac:fonts douxinchun$
   src: local('PT Sans'), local('PTSans-Regular'), url(/fonts/pt_sans/BJVWev7_auVaQ__OU8Qih1KPGs1ZzpMvnHX-7fPOuAc.woff2) format('woff2');
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
-{%endcodeblock%}  
+```  
 
 编辑 source/_includes/custom/head.html 为
-{%codeblock%}
+```
 <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="/stylesheets/pt_serif.css" rel="stylesheet" type="text/css">
 <link href="/stylesheets/pt_sans.css" rel="stylesheet" type="text/css">
-{%endcodeblock%}  
+```  
 
 部署访问,速度果然快了很多.
 

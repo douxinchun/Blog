@@ -51,11 +51,11 @@ username
 
 打开goagent/local/proxy.ini文件 对于其中的[php]部分
 改动两行就可以了 分别是
-{%codeblock%}
+```
 [php]
 enable = 1
 fetchserver = http://username.ecvps.net/index.php
-{% endcodeblock %}
+```
 密码用可以用默认的
 也可以不用 则要统一修改goagent/server/php路径下所有文件内设定的默认密码
 网上一些文章用的是fetch.php 但注意新版goagent 3.2.3用的是index.php
@@ -65,9 +65,9 @@ fetchserver = http://username.ecvps.net/index.php
 
 ##启动
 用Terminal cd到goagent的local目录:
-{%codeblock%}
+```
 $ python proxy.py 
-{% endcodeblock %}  
+``` 
 
 然后就没有然后,  
 {%img /blog_reference_image/2015/7/ecvps_google.png%}

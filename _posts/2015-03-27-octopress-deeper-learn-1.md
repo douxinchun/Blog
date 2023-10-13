@@ -10,7 +10,7 @@ categories: octopress
 主要用来记录学习Octopress中的一些知识点.  
 
 先记录一个命令,rake -T 可以查看命令rake的介绍:  
-{% codeblock octopress-bash %}
+```zsh
 localhost:octopress douxinchun$ rake -T
 rake clean                     # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
 rake copydot[source,dest]      # copy dot files for deployment
@@ -31,7 +31,7 @@ rake setup_github_pages[repo]  # Set up _deploy folder and deploy branch for Git
 rake update_source[theme]      # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source....
 rake update_style[theme]       # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
 rake watch                     # Watch the site and regenerate when it changes
-{% endcodeblock %}
+```
 
 
 追加一个介绍的很详细的Octopress使用者的总结,内容很详细,留作备忘  

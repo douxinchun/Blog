@@ -21,37 +21,37 @@ categories: Linux
 ###1.连接云服务器  
 由于需要连接的是centOS系统,所有先放弃Windows和Mac OS X上的远端桌面连接工具吧.Windows上应该是需要一个SSH的客户端工具.  
 打开Terminal ,root 是username 后面跟的是ip地址  
-{% codeblock   Terminal %}
+```zsh
 localhost:~ douxinchun$ ssh -l root 182.92.178.156
-{% endcodeblock %}  
+``` 
 按照提示输入密码,登录成功后显示如下:
 
-{% codeblock   Terminal %}
+```zsh
 Last login: Mon May  4 16:31:40 2015 from 111.203.240.200
 
 Welcome to aliyun Elastic Compute Service!
 
 [root@iZ256vx3u5fZ ~]# 
-{% endcodeblock %}  
+``` 
 
 ###2.安装SVN Server  
 检查是否安装  
-{% codeblock   Terminal %}
+```zsh
 rpm -qa subversion
 [root@iZ256vx3u5fZ /]# rpm -qa subversion
 subversion-1.6.11-12.el6_6.x86_64
 [root@iZ256vx3u5fZ /]# 
-{% endcodeblock %}  
+``` 
 卸载旧的版本  
-{%codeblock Terminal%}
+```zsh
 yum remove subversion
-{%endcodeblock%}
+```
 安装  
-{%codeblock Terminal%}
+```zsh
 yum install -y subversion
-{%endcodeblock%}
+```
 验证安装是否成功
-{%codeblock Terminal%}
+```zsh
 svnserve --version
 [root@iZ256vx3u5fZ /]# svnserve --version
 svnserve，版本 1.6.11 (r934486)
@@ -69,18 +69,18 @@ Subversion 是开放源代码软件，请参阅 http://subversion.tigris.org/ �
 Cyrus SASL 认证可用。
 
 [root@iZ256vx3u5fZ /]# 
-{%endcodeblock%}  
+```  
 
 ###3.配置SVN Server  
 首先,创建一个SVN的版本库  
 
-{%codeblock Terminal%}
+```zsh
 [root@iZ256vx3u5fZ svn]# mkdir /home/svn/testRepo
 [root@iZ256vx3u5fZ svn]# svnadmin create /home/svn/testRepo
 [root@iZ256vx3u5fZ svn]# cd /home/svn/testRepo/
 [root@iZ256vx3u5fZ testRepo]# ls -a
 .  ..  conf  db  format  hooks  locks  README.txt
-{%endcodeblock%}
+```
  如果创建成功,testRepo目录下会多出几个文件夹,进入到conf文件夹会有3个配置文件:  
  (1). svnserve.conf:  svn服务综合配置文件.   
  (2). passwd:  用户名口令文件。  
@@ -88,25 +88,25 @@ Cyrus SASL 认证可用。
  
 ####passwd文件  
  
-{%codeblock Terminal%}
+```zsh
 [users]
 # harry = harryssecret
 # sally = sallyssecret
 svnuser=123456                 
-{%endcodeblock%}
+```
 svnuser为用户名.123456为密码  
 
 ####authz文件  
 
 添加一行这个
-{%codeblock Terminal%}
+```zsh
 [/]
 svnuser=rw
-{%endcodeblock%}
+```
 意思是svnuser用户对所有的目录有读写权限,如果需要详细的分组,可以参照这里[http://www.blogjava.net/rockblue1988/archive/2014/11/19/420246.aspx]
 
 ####svnserve.conf文件
-{%codeblock Terminal%}
+```zsh
 #匿名访问者权限
 anon-access = none
 #验证用户权限
@@ -117,12 +117,12 @@ password-db = /home/svn/testRepo/passwd
 authz-db = /home/svn/testRepo/authz
 #项目名称（UUID）
 realm =testRepo
-{%endcodeblock%}
+```
 采用默认配置. 以上语句都必须顶格写, 左侧不能留空格, 否则会出错.
 
 ###4.打开Linux下的防火墙端口  
 默认是3690端口，你也可以用别的。已开启的跳过这一步
-{%codeblock Terminal%}
+```zsh
 修改
 iptables -I INPUT -p tcp --dport 3690 -j ACCEPT
 保存
@@ -131,12 +131,12 @@ iptables -I INPUT -p tcp --dport 3690 -j ACCEPT
 service iptables restart
 查看
 /etc/init.d/iptables status
-{%endcodeblock%}
+```
 
 ###5.启动SVN服务  
-{%codeblock%}
+```
 svnserve -d -r /home/svn
-{%endcodeblock%}
+```
 -d:守护进程
 -r:svn根目录
 这里注意启动时的目录一定不要再往下写一级,不然客户端再按照下面的地址访问的时候,会提示错误:  
@@ -147,14 +147,14 @@ XXXXXXX(别怪我,实在记不清了)non existent in revision 0
 svn://182.92.178.156:3690/testRepo
 
 如果端口被占用可以重新换一个端口运行,更换端口可以让一台服务器运行多个SVN Server,不要忘记按照第4步在iptable中打开相应的端口
-{%codeblock%}
+```
 svnserve -d -r /home/svn  --listen-port 3391
-{%endcodeblock%}
+```
 关闭SVN服务
-{%codeblock%}
+```
 ps -aux|grep svn  
 kill 1755 进程id  
-{%endcodeblock%}
+```
 
 
 启动完成后,客户端就可以成功的连接了  
@@ -163,24 +163,24 @@ kill 1755 进程id
 ----  
 ###6.遇到的问题  
 1.端口被占用
-{%codeblock%}
+```
 svnserve: 不能绑定服务器套接字: 地址已在使用
-{%endcodeblock%}
+```
 更换端口,或者关闭正在运行的SVN服务,参见第5步,启动服务  
 
 2.导入工程  
-{%codeblock%}
+```
 $ mkdir MyProject  
 $ mkdir MyProject/trunk  
 $ mkdir MyProject/branches  
 $ mkdir MyProject/tags  
 svn import MyProject svn://182.92.178.156/testRepo/MyProject -m "first import project"  
-{%endcodeblock%}
+```
 
 3.导出工程
-{%codeblock%}
+```
 svn co svn://192.168.5.228/testRepo/MyProject  
-{%endcodeblock%}
+```
 
 4.客户端查看不到日志  
 修改svnserver.conf文件里面：

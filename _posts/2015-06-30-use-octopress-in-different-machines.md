@@ -23,30 +23,30 @@ categories: octopress
 接下来我们需要把GitHub上已经建好的博客项目clone下来。
 
 克隆远程仓库到本地
-{% codeblock %}
+```
 $ git clone git@github.com:username/username.github.com.git octopress ##octopress 为你的本地项目文件夹
-{% endcodeblock %}
+```
 
 切换到source分支
-{% codeblock %}
+```
 $ cd octopress ##进入项目
 $ git checkout source ##切换到本地的source分支
-{% endcodeblock %}
+```
 
 创建_deploy目录(存在的话,直接同步),并和远程库的master分支同步
-{% codeblock %}
+```
 $ mkdir _deploy
 $ cd ./_deploy
 $ git pull origin master ##同步本地的master branch
-{% endcodeblock %}
+```
  
 配置环境,在octopress目录下进行,
-{% codeblock %}
+```
 $ gem install bundler
 $ rbenv rehash    # If you use rbenv, rehash to be able to run the bundle command
 $ bundle install
 $ rake setup_github_pages
-{% endcodeblock %}
+```
 
 然后它会询问你的项目仓库的URL:
 >
@@ -60,30 +60,30 @@ Enter the read/write url for your repository (For example, ‘git@github.com:you
 ###更新变化（重要）
 
 每次使用前，先确保拿到最新的文件(先GitHub上的远程库同步)
-{% codeblock %}
+```
 $ cd octopress  #进入项目目录
 $ git pull origin source  # 更新本地source branch
 $ cd ./_deploy  #进入_deploy目录
 $ git pull origin master  # 更新本地master branch
-{% endcodeblock %}
+```
 
 提交
 
 提交的时候，由于需要多台机器协作，需要把source分支push到origin中，这样另外一台机器才能拿到最新的源文件。
-{% codeblock %}
+```
 $ rake generate
 $ git add .
 $ git commit -am "提交注释" 
 $ git push origin source  # 将本地当前分支的更新推送到远程 source branch 
 $ rake deploy             # 更新远程 master branch，并部署博文
-{% endcodeblock %}
+```
 
 另外的机器更新变化
 
 在另外的机器上，就可以获取到相应的变化。
-{% codeblock %}
+```
 $ cd octopress  #进入项目目录
 $ git pull origin source  # 更新本地source branch
 $ cd ./_deploy  #进入_deploy目录
 $ git pull origin master  # 更新本地master branch和远程库的 master保持同步
-{% endcodeblock %}
+```

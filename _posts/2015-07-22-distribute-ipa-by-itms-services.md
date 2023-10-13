@@ -12,7 +12,7 @@ styles: [data-table]
 需要两个文件，一个是html，另一个是plist。
 
 文件index.html(请自动忽略css部分,我实在不会写前端):
-{% codeblock  %}
+```
 <html>
 <head>
     <style>
@@ -31,10 +31,10 @@ styles: [data-table]
 </a></p>
 </body>
 </html>
-{% endcodeblock %}  
+``` 
 
 文件plist:
-{% codeblock  %}
+```
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -85,7 +85,7 @@ styles: [data-table]
    </array>
 </dict>
 </plist>
-{% endcodeblock %}   
+```  
 
 ###注意  
 在iOS7.1之前,协议地址后的url需要使用http协议,

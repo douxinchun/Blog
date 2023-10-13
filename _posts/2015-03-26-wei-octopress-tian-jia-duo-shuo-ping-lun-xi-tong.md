@@ -33,7 +33,8 @@ octopress自带的disqus自定义的选项非常少,由于国内的原因,加载
 解决方案参照 [技术小黑屋的Blog:集成多说评论](http://droidyue.com/blog/2014/07/29/integrate-duoshuo-in-octopress/)，思路就是对所有body div的设置不应用到id为ds-wrapper的div 默认的设置如下。  
 文件为`sass/base/_theme.scss`  
 
-{% codeblock sass/base/_theme.scss %}
+sass/base/_theme.scss  
+```
 body {
   > div {
     background: $sidebar-bg $noise-bg;
@@ -44,10 +45,11 @@ body {
     }
   }
 }
-{% endcodeblock %}
+```
 
 使用not把ds-wrapper加入例外，修改为这样的设置    
-{% codeblock 修改后的_theme.scss文件 %}
+修改后的_theme.scss文件
+```
 body {
   > div:not(#ds-wrapper){
     background: $sidebar-bg $noise-bg;
@@ -58,5 +60,5 @@ body {
     }
   }
 }
-{% endcodeblock %}      
+```    
 到这里，就比较完美的添加完多说的评论了.
