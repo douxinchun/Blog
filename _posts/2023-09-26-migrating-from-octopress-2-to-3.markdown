@@ -49,7 +49,7 @@ Octorpess 3.0 相比 Octopress 2.0 而言，有着不同的分发方式和维护
 
 **c.查看 Hello world**  
 
-执行`jekyll serve`，然后在浏览器中打开 http://localhost:4000/，可以看到 [Welcome to Jekyll!](https://douxinchun.github.io/jekyll/update/2023/09/25/welcome-to-jekyll.html)   
+执行`jekyll serve`，然后在浏览器中打开 http://localhost:4000/，可以看到 [Welcome to Jekyll!](/posts/welcome-to-jekyll/)   
 ``` zsh
 cd Blog
 jekyll serve # 按照提示可能需要加上前缀 bundle exec

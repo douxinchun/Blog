@@ -39,7 +39,7 @@ Jekyll 3.2 以前(不支持 gem theme 的版本)的项目目录结构.
 ├── .jekyll-metadata
 └── index.html # can also be an 'index.md' with valid front matter
 ```
-Jekyll 3.2 以后,因为 Jekyll theme 采用 gem 来管理, 所以 `_includes`, `_layouts` 以及 `_sass`等文件夹,都被移到了 gem theme 的项目文件夹中. 
+Jekyll 3.2 以后,因为 Jekyll theme 采用 gem 来管理, 所以 `_includes`, `_layouts` 以及 `_sass`等文件夹,都被移到了 theme gem 项目文件夹中. 
 ```
 ➜  Blog git:(main) ✗ bundle info minima
   * minima (2.5.1)
@@ -103,4 +103,11 @@ export JEKYLL_ENV=$Original_JEKYLL_ENV
 ```
 permalink: /:year/:month/:day/:title:output_ext
 ```  
+{: file="_config.yml" }  
+
+Chirpy 主题可以直接使用下面的选项作为 permalink:  
+```
+permalink: /posts/:title/
+```  
+{: file="_config.yml" }
 更多选项,请参照[http://jekyllrb.com/docs/permalinks/](http://jekyllrb.com/docs/permalinks/)

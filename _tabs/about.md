@@ -1,12 +1,12 @@
 ---
-layout: page
-title: About
-permalink: /about/
+# the default layout is 'page'
+icon: fas fa-info-circle
+order: 4
 ---
 
 # Xinchun Dou  
 
-iOS 程序员, 懂一点 Ruby, Java, JavaScript. 现居北京, 业余爱好中国象棋.
+iOS 程序员, 懂一点 Ruby, Java, JavaScript. 现居北京, 平时喜爱下中国象棋.
 
 早期 Blog: [CSDN](http://blog.csdn.net/douxinchun)  
 
